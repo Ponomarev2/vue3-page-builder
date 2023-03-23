@@ -2,8 +2,8 @@
 
 import Card from "./components/Card.vue" 
 import Grid from "./components/Grid.vue"
-import RandomMovie from "./components/RandomMovie.vue";
-import { ref, reactive } from 'vue'
+import RandomFilm from "./components/RandomMovie.vue";
+import { ref } from 'vue'
 import Moveable from "vue3-moveable";
 
 const cards = ref([
@@ -58,7 +58,7 @@ function selectItem(e) {
   switch (e.target.className) {
     case 'card':
     case 'grid-controls':
-    case 'container':
+    case 'container-film':
       targetRef.value = e.target.parentNode;
       break;
     case 'poster':
@@ -94,7 +94,7 @@ function selectItem(e) {
       :key="item.id"
       @del="delGrid(i)"
     />
-    <RandomMovie v-for="(item, i) in films"
+    <RandomFilm v-for="(item, i) in films"
       class="film-section"
       :key="item.id"
       @del="delFilm(i)"
@@ -123,9 +123,6 @@ function selectItem(e) {
   left: 20px;
 }
 
-.container{
-  min-height: 90%;
-}
 
 .card-section{
   position: absolute;

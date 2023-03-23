@@ -4,7 +4,7 @@ import { ref, onMounted } from 'vue'
 
 const filmData = ref(null);
 
-async function getRandomoMovie() {
+async function getRandomoFilm() {
   const response = await fetch('https://api.kinopoisk.dev/v1/movie/random?token=BW522SP-V884BZ4-K07PJAE-9TAGT4Y');
   const data = await response.json();
   filmData.value = data;
@@ -12,7 +12,7 @@ async function getRandomoMovie() {
 }
 
 onMounted(() => {
-  getRandomoMovie();
+  getRandomoFilm();
 })
 
 </script>
@@ -20,7 +20,7 @@ onMounted(() => {
 
 <template>
   <div>
-    <div class="container" v-if="filmData !== null">
+    <div class="container-film" v-if="filmData !== null">
       <button class="button-del" @click="$emit('del')">x</button>
       <img class="poster" :src="filmData.poster['url']" width="200" height="300"/>
       <div class="name">{{ filmData.name }}</div>
@@ -33,7 +33,7 @@ onMounted(() => {
 
 <style>
 
-.container{
+.container-film{
   color: black;
   text-align: center;
   background-color: sandybrown;
