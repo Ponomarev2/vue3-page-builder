@@ -103,7 +103,6 @@ function selectItem(e) {
       :target = "targetRef"                      
       :draggable = "true"
       :origin="false"
-
       :snappable="true"
       :bounds="{ left:0, top:0, right:5, bottom:5, position:'css' }"
       @drag = "onDrag"
@@ -131,7 +130,7 @@ function selectItem(e) {
 .grid-section{
   position: absolute;
   width: fit-content;
-  background-color: lavender;
+  background-color: gainsboro;
 }
 
 .film-section{
