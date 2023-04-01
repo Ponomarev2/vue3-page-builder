@@ -23,12 +23,10 @@ function updateText(e, field) {
 
 
 <template>
-  <div>
-    <div class="card">
-      <button class="button-del" @click="$emit('del')">x</button>
-      <h2 class="header" contenteditable @input="updateText($event, 'header')">{{header}}</h2>
-      <p class="text" contenteditable @input="updateText($event, 'text')">{{text}}</p>
-    </div>
+  <div class="card">
+    <button class="button-del" @click="$emit('del')">x</button>
+    <h2 class="header" contenteditable @input="updateText($event, 'header')">{{header}}</h2>
+    <p class="text" contenteditable @input="updateText($event, 'text')">{{text}}</p>
   </div>
 </template>
 

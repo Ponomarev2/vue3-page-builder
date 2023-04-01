@@ -56,7 +56,9 @@ function onDrag(e) {
 function selectItem(e) {
   console.log(e.target.className);
   switch (e.target.className) {
-    case 'card':
+    case 'card card-section':
+      targetRef.value = e.target;
+      break;
     case 'grid-controls':
     case 'container-film':
       targetRef.value = e.target.parentNode;
@@ -92,6 +94,7 @@ function selectItem(e) {
     <Grid v-for="(item, i) in grids"
       class="grid-section"
       :key="item.id"
+      :active="targetRef === null"
       @del="delGrid(i)"
     />
     <RandomFilm v-for="(item, i) in films"
@@ -121,7 +124,6 @@ function selectItem(e) {
   top:20px;
   left: 20px;
 }
-
 
 .card-section{
   position: absolute;

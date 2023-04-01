@@ -4,7 +4,7 @@ import { ref, reactive } from 'vue'
 import Card from "./Card.vue"
 import Moveable from "vue3-moveable";
 
-const props = defineProps(['id']);
+const props = defineProps(['id', 'active']);
 const cards = ref([
   { id: 1 },
   { id: 2 },
@@ -46,7 +46,7 @@ function selectItem(e) {
   <div>
     <div class="grid-controls">
       <button class="button-add-card" @click="addCard">+</button>
-      <button class="button-del" @click="$emit('del', this.idx)">x</button>
+      <button class="button-del" @click="$emit('del')">x</button>
     </div>
     <div class="grid" @click="selectItem">
       <card v-for="(item, i) in cards" 
@@ -56,7 +56,7 @@ function selectItem(e) {
       />
     </div>
     <Moveable 
-      :target = "targetRef"                      
+      :target = "props.active ? targetRef : null"   
       :draggable = "true"
       :origin="false"
       @drag = "onDrag"
